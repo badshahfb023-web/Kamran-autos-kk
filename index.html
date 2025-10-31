@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fouji Kamran Autos: Your Bike's Complete Spare Parts Destination</title>
+    <style>
+        /* Base Colors for Style 1 */
+        body { background-color: #1a1a1a; color: #ffffff; font-family: 'Montserrat', sans-serif; margin: 0; padding: 0; }
+        .accent-color { color: #ff9900; }
+        .btn-primary { background-color: #ff9900; color: #1a1a1a; border: none; padding: 10px 25px; border-radius: 5px; text-decoration: none; font-weight: bold; cursor: pointer; }
+        
+        /* General Structure Styling */
+        header, footer { background-color: #2c2c2c; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; }
+        header h1 { margin: 0; font-size: 2em; }
+        header nav ul { list-style: none; margin: 0; padding: 0; display: flex; }
+        header nav ul li { margin-left: 20px; }
+        header nav ul li a { color: white; text-decoration: none; font-weight: bold; }
+
+        section { padding: 80px 5%; }
+        
+        /* Hero Section Styling */
+        .hero-section { 
+            background-image: url('your_uploaded_image_url_here.jpg'); /* <-- आपकी इमेज का URL यहां आएगा */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            min-height: 500px; /* Adjust height as needed */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative; /* For overlay */
+            color: #ffffff; /* Default text color on image */
+        }
+        .hero-section::before { /* Dark overlay for better text readability */
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); /* Adjust opacity as needed */
+            z-index: 1;
+        }
+        .hero-section h2, .hero-section p, .hero-section .btn-primary {
+            position: relative; /* Bring text/button above overlay */
+            z-index: 2; 
+        }
+
+        /* Colorful Text Styling */
+        .hero-section h2 { 
+            font-size: 3.5em; /* Larger heading */
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #ffcc00; /* Bright yellow for heading */
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.7); /* Text shadow for pop */
+            margin-bottom: 10px;
+        }
+        .hero-section p {
+            font-size: 1.5em;
+            color: #b3e0ff; /* Light blue for description */
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+            margin-bottom: 30px;
+        }
+        
+        /* Other section styles */
+        .section-card { background-color: #242424; padding: 40px; border-radius: 8px; margin: 20px 0; }
+        .category-grid { display: flex; justify-content: center; flex-wrap: wrap; gap: 20px; }
+        .category-item { border: 1px solid #3d3d3d; padding: 25px; border-radius: 8px; text-align: center; flex: 1 1 calc(25% - 40px); max-width: 250px; background-color: #2c2c2c; transition: transform 0.3s ease, background-color 0.3s ease; }
+        .category-item:hover { transform: translateY(-5px); background-color: #3a3a3a; }
+        .category-item h3 { color: #ff9900; margin-bottom: 10px; }
+
+        .why-us { background-color: #111111; padding: 60px 5%; text-align: center; }
+        .why-us ul { list-style: none; padding: 0; display: flex; justify-content: center; flex-wrap: wrap; gap: 30px; margin-top: 30px; }
+        .why-us ul li { background-color: #2c2c2c; padding: 20px; border-radius: 8px; flex: 1 1 calc(33% - 60px); max-width: 300px; text-align: left; }
+        .why-us h2 { margin-bottom: 40px; font-size: 2.5em; text-transform: uppercase; }
+
+        #shop { text-align: center; }
+        .product-card { margin-top: 20px; border: 1px solid #3d3d3d; padding: 25px; border-radius: 8px; background-color: #242424; max-width: 500px; margin-left: auto; margin-right: auto; }
+        .product-card h3 { color: #ffcc00; }
+        .product-card p { color: #cccccc; margin-bottom: 20px; }
+
+        #contact { background-color: #242424; padding: 80px 5%; text-align: center; }
+        #contact .contact-info { margin-bottom: 30px; }
+        #contact .contact-info h3 { color: #ff9900; margin-bottom: 10px; }
+        #contact p { margin: 5px 0; }
+        #contact .contact-form { display: flex; flex-direction: column; max-width: 450px; gap: 15px; margin: 30px auto 0 auto; }
+        #contact .contact-form input, #contact .contact-form textarea { padding: 12px; background-color: #1a1a1a; color: white; border: 1px solid #3d3d3d; border-radius: 5px; }
+        #contact .contact-form textarea { resize: vertical; }
+
+        .map-container { margin-top: 40px; height: 350px; background-color: #2c2c2c; border-radius: 8px; display: flex; justify-content: center; align-items: center; }
+        .map-container p { color: #aaaaaa; }
+        
+        footer { text-align: center; padding: 25px 5%; }
+        footer p { margin: 0; font-size: 0.9em; color: #cccccc; }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header nav ul { flex-direction: column; align-items: center; margin-top: 10px; }
+            header nav ul li { margin-left: 0; margin-top: 10px; }
+            .hero-section h2 { font-size: 2.5em; }
+            .hero-section p { font-size: 1.2em; }
+            .category-item { flex: 1 1 calc(50% - 40px); max-width: 350px; }
+            .why-us ul li { flex: 1 1 calc(100% - 60px); max-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar style-dark">
+        <h1><span class="accent-color">Fouji Kamran</span> Autos</h1>
+		<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fouji Autos Image</title>
+</head>
+<body>
+
+    <img src="C:\Users\dj\Downloads\WhatsApp Image 2025-10-31 at 4.37.10 PM.jpeg"style="max-width: 10%; height: auto; display: block; margin: 7px auto;"
+    >
+
+</body>
+</html>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero-section">
+            <h2><span class="accent-color">Fouji Autos:</span> Every Part Your Bike Needs, Guaranteed.</h2>
+            <p>From the Engine to the Lights – Genuine Spares, Best Prices in Nokot.</p>
+        </section>
+
+        <section id="about" class="section-card">
+            <h2>Fouji Autos: A Name of Quality and Trust</h2>
+            <p>Our goal is to keep your bike running perfectly on the road. Under the guidance of owner **Mr. Kamran** in **Nokot**, we provide only **genuine and high-quality** spare parts. You will find every part you need, from A to Z, right here.</p>
+        </section>
+
+        <section class="categories background-grid">
+            <h2>Our Most Popular Categories</h2>
+            <div class="category-grid">
+                <div class="category-item">
+                    <h3>Engine Parts</h3>
+                    <p>Pistons, Spark Plugs, Oils & Filters</p>
+                </div>
+                <div class="category-item">
+                    <h3>Brakes & Suspension</h3>
+                    <p>Brake Shoes, Disc Pads, Shock Absorbers</p>
+                </div>
+                <div class="category-item">
+                    <h3>Lighting & Electric</h3>
+                    <p>Headlights, Batteries, Wiring</p>
+                </div>
+                <div class="category-item">
+                    <h3>Body & Accessories</h3>
+                    <p>Fuel Tanks, Mirrors, Mudguards</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="why-us background-dark-overlay">
+            <h2>Why Trust <span class="accent-color">Fouji Autos</span>?</h2>
+            <ul>
+                <li>**100% Genuine Parts:** Only certified branded spares.</li>
+                <li>**A to Z Inventory:** Every type of spare part in one place.</li>
+                <li>**Expert Customer Service:** Our specialists are ready to guide you.</li>
+            </ul>
+        </section>
+    </main>
+
+    <section id="shop">
+        <h2>ALL BIKE SPARE PARTS A TO Z</h2>
+        <p>A wide range of parts will be displayed here, with filtering options for Bike Model and Category.</p>
+                                    <h3>All Bikes Parts </h3>
+                <p><span class="accent-color">munasib kimat pr </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section-contact">
+        <h2>Contact Our Team</h2>
+        
+        <div class="contact-info">
+            <h3>Owner: <span class="accent-goldencolor">Mr. Kamran</span></h3>
+            <h3>Location: <span class="accent-color">Nokot</span></h3>
+        </div>
+        
+        <div class="contact-info">
+            <p>**Contact Number:** <a href="tel:03124950303">0312-4950303</a></p>
+            <p>Working Hours: Monday to Saturday: 9:00 AM – 7:00 PM</p>
+        </div>
+        
+        <form action="#" method="POST" class="contact-form">
+            <h3>Online Inquiry</h3>
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+            <input type="tel" id="phone" name="phone" placeholder="Phone Number (Required)" value="03124950303">
+            <textarea id="message" name="message" rows="4" placeholder="Your Message" required></textarea>
+            <button type="submit" class="btn btn-primary">SEND MESSAGE</button>
+        </form>
+
+        <div class="map-container">
+            <p>(24.854109, 69.404672)</p>
+        </div>
+    </section>
+
+    <footer class="footer style-dark">
+        <p>© 2025 <span class="accent-color">Fouji Kamran Autos</span>. All Rights Reserved. | <span class="accent-color">Nokot</span></p>
+    </footer>
+
+</body>
+</html>
